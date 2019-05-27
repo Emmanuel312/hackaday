@@ -1,0 +1,23 @@
+<html>
+<script language="javascript">
+var connection = new WebSocket('ws://localhost:3000/rabbitws');
+
+connection.onopen = function(){
+    console.log('Connection open!');
+    connection.send('12639')
+}
+connection.onclose = function(){
+console.log('Connection closed');
+}
+connection.onmessage = function(e){
+var server_message = e.data;
+console.log(server_message);
+document.getElementById("result").innerHTML += server_message + "<br>";
+}
+</script>
+<body>
+<form>
+<div id="result"></result>
+</form>
+</body>
+</html>
