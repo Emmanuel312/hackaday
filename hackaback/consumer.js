@@ -12,22 +12,35 @@ module.exports = (ids,ws,cb) =>
             if (error1) throw error1
 
             channel.assertExchange(exchange, 'direct', {durable: false})
-
+            
             ids.forEach(id => 
             {
-                channel.assertQueue(id,{exclusive: true},(error2, q) => 
+                channel.assertQueue(id,{exclusive: false},(error2, q) => 
                 {
+                    
                     if (error2) throw error2;
 
                     console.log(' [*] Waiting for logs. To exit press CTRL+C')
-
+                    channel.prefetch(1)
                     channel.bindQueue(q.queue, exchange, id)
-                
+                    
+                    
                     channel.consume(q.queue, (msg) => 
-                    {
-                        ws.send(msg.content.toString())
+                    {   
+                        
+                        
+                        setTimeout(() =>
+                        {
+                            //console.log(" [x] %s: '%s'", msg.fields.routingKey, msg.content.toString())
+                            ws.send(msg.content.toString())
+                            channel.ack(msg)
+                        },1000)
+                        
+                        
+                        
+                        //console.log(channel)
                         //console.log(" [x] %s: '%s'", msg.fields.routingKey, msg.content.toString())
-                    }, { noAck: true })
+                    })
                 })
             })
             

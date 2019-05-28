@@ -2,10 +2,7 @@
   package="com.hackafront">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <meta-data
-    android:name="com.google.android.geo.API_KEY"
-    android:value="AIzaSyAKl_Uqw-XJfdmYIsT6jxA99Kx1au7q-8U" />
-
+    
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
@@ -24,6 +21,10 @@
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+      <meta-data
+      android:name="com.google.android.geo.API_KEY"
+      android:value="AIzaSyB5uVLj5i89gNsr2H6N-5Z2SmjerQUx3Hw" />
+
     </application>
 
 </manifest>

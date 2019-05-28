@@ -11,26 +11,21 @@ module.exports = () =>
 
         connection.createChannel((error1, channel) =>
         {
+            
             if (error1) throw error1;
 
             channel.assertExchange(exchange, 'direct', { durable: false })
-
-            lineReader.eachLine('dados.csv', linha =>
+            
+            lineReader.eachLine('dados3.csv', linha =>
             {
                 const data = handleData(linha)
                 const rounting_key = data.split(',')[0]
+                
                 channel.publish(exchange, rounting_key, Buffer.from(data))
                 //console.log(" [x] Sent %s: '%s'", rounting_key, linha)
                 if(!linha) return false
             })
         
         })
-        
-        setTimeout(() =>
-        {
-            connection.close()
-            process.exit(0)
-        }, 3000)
-        
     })
 }
