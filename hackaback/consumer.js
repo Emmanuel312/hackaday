@@ -33,7 +33,7 @@ module.exports = (ids,ws,cb) =>
                         {
                             //console.log(" [x] %s: '%s'", msg.fields.routingKey, msg.content.toString())
                             ws.send(msg.content.toString())
-                            channel.ack(msg)
+                            channel.ack(msg) 
                         },1000)
                         
                         

@@ -5,6 +5,7 @@ const producer = require('./producer')
 
 wss.on('connection', ws =>
 {
+    console.log('conectou')
     ws.on('message', id =>
     {
         console.log('mandou o id ' + id)

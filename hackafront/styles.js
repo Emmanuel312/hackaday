@@ -1,7 +1,8 @@
 import styled from 'styled-components/native'
 
 export const Button = styled.TouchableOpacity`
-    background: #000;
+    margin: 5px 0; 
+    background: blue;
     border-radius: 5px;
     height: 50px;
     width: 80px; 
@@ -13,6 +14,6 @@ export const TextButton = styled.Text`
     font-weight: bold;
 ` 
 export const Menu = styled.View`
-
-
+    background : #fff;
+    border-radius: 5px;
 `
