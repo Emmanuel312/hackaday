@@ -13,7 +13,7 @@
     "amqplib": "^0.5.3",
     "express": "^4.17.0",
     "line-reader": "^0.4.0",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.4.0",
     "utm-latlng": "^1.0.5",
     "ws": "^7.0.0"
   },
